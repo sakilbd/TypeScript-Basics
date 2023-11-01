@@ -1,0 +1,5 @@
+
+https://www.npmjs.com/package/ts-node-dev
+
+1. npm i -g ts-node-dev     --to comile type script directly 
+2. ts-node-dev --respawn --transpile-only .\module1\src\1.11.ts   == to run .ts file 
