@@ -39,5 +39,5 @@
         console.log(`Hi ${friend}`)
 
     }
-    greetFriends2("abul", "kashem", "mokbul", "sdflkj")  //se no error 
+    greetFriends2("abul", "kashem", "mokbul", "sdflkj")  //see no error 
 }

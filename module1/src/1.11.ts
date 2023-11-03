@@ -18,8 +18,8 @@
 
     //nullish coalescing operator 
     //null/ undefined --->decision making
-    const isAuthenticated = "";
-    const result1 = isAuthenticated ?? "Guest "
+    const isAuthenticated = "saskil";
+    const result1 = isAuthenticated ?? "Guest " //"??" checks if the value is null or undefined 
     const result2 = isAuthenticated ? isAuthenticated : "Guest "
 
     console.log({ result1 }, { result2 }); //resut guest(RESULT2) as isAuthenticated is null or undefined & RETUNRS "" FOR RESULT1
@@ -28,7 +28,7 @@
         name: string,
         address: {
             city: string,
-            road?: stirng,
+            road?: string,
         }
     }
     const user: User = {

@@ -15,7 +15,7 @@
 
     const {
         contactNo,
-        name: { lastName }
+        name: { lastName:lstName }  //name alias
     } = user;
 
 
@@ -24,6 +24,6 @@
 
     const myFriends = ["joe", "rahim", "karim", "ross"]
 
-    const [, , bestFriend, ...rest] = myFriends;
+    const [, , bestFriend, ...rest] = myFriends;  //..rest = ross ,bestFriend =karim 
 
 }
