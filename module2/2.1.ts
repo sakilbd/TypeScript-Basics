@@ -6,7 +6,7 @@
     anything = "Next Level Web developement";
     anything = 223;
 
-    (anything as number).
+    (anything as string).charAt(1)    //suggests functions that comes with number/string 
 
 
     const kgToGm = (value: string | number): string | number | undefined => {
