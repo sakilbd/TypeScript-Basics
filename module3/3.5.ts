@@ -11,7 +11,7 @@
             this._balance = balance;
         }
         addDeposit(amount: number) {
-            this._balance = this.balance + amount;
+            this._balance = this._balance + amount;
         }
         getBalance() {
             return this._balance;
