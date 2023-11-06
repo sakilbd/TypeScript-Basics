@@ -36,7 +36,18 @@
     toyotaCar.startEngine();
 
     //through abstract class 
-    class Car2 {
+
+    //idea only in abstract class
+    abstract class Car2 {
+        abstract startEngine(): void
+        abstract stopEngine(): void
+        abstract move(): void
+        test() {
+            console.log("I am just testing")
+        }
+    }
+
+    class ToyotaCar extends Car2 {
         startEngine(): void {
             console.log(`I am starting engine `)
         }
@@ -46,13 +57,11 @@
         move(): void {
             console.log(`I am moving engine `)
         }
-        test() {
-            console.log("I am just testing")
-        }
     }
 
-    const hondaCar = new Car2;
-    hondaCar.test();
+    const hondaCar = new ToyotaCar;
+    hondaCar.test(); // gets by inheritance 
+    hondaCar.stopEngine();
 
 
 
