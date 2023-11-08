@@ -1,25 +1,18 @@
 {
 
-    const sumArrayIfNumber = (param: unknown) => {
-        let sum = 0;
-        if (Array.isArray(param)) {
-            if (param.every((value) => {
-                return typeof value === 'number';
-            })) {
-                for (let item of param) {
-                    sum += item
-                }
-                console.log(sum);
-            }
-            else {
-                console.log("Please put array of numbers")
-            }
-        }
-        else {
-            console.error("Please put array of numbers")
-        }
-
+    interface Product {
+        name: string;
+        price: number;
+        quantity: number;
     }
 
-    sumArrayIfNumber([1, 2, 3,"df"]);
+    const calculateTotalCost = (products: Product[]) => {
+        let totalCost = 0;
+        for (let item of products) {
+            totalCost += item.price * item.quantity
+        }
+        return totalCost;
+    }
+
+
 }

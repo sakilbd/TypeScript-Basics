@@ -88,3 +88,44 @@ const sumArrayIfNumber = (param: unknown) => {
     }
 
 }
+
+
+// Problem 7
+const findFirstOccurrence = <T>(arr: T[], value: T) => {
+
+    const searchKeyindex = arr.indexOf(value);
+    return searchKeyindex;
+
+}
+
+const numbers: number[] = [1, 2, 3, 4, 5, 2];
+
+const strings: string[] = ["apple", "banana", "cherry", "date", "apple"];
+
+const targetNumber = 2;
+
+const targetString = "cherry";
+
+const indexInNumbers = findFirstOccurrence(numbers, targetNumber);
+
+const indexInStrings = findFirstOccurrence(strings, targetString);
+
+console.log(indexInNumbers); //output:  1
+
+console.log(indexInStrings);
+
+
+// Problem 8
+interface Product {
+    name: string;
+    price: number;
+    quantity: number;
+}
+
+const calculateTotalCost = (products: Product[]) => {
+    let totalCost = 0;
+    for (let item of products) {
+        totalCost += item.price * item.quantity
+    }
+    return totalCost;
+}
