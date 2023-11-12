@@ -1,0 +1,101 @@
+https://www.mongodb.com/docs/manual/reference/operator/update/addToSet/
+
+db.test.find({gender:"Female"},{name:1,email:1});   //name ,email only shows up 
+db.test.find({ gender: "Female" }).project({ name: 1, gender: 1, email: 1 })
+
+
+db.test.findOne({ gender: "Female" },{ name: 1, gender: 1, email: 1 }) //shows one only
+
+MongoDb Operators
+
+db.test.find({ age: {$eq:12}}) //equal
+ 
+
+db.test.find({ age: {$gt:18}}) //greater than 
+
+db.test.find({ age: {$gte:30}}).sort({age:1})  //greater than equal and sort 
+
+db.test.find({ age: {$gte:18,$lte:30}},{age:1}).sort({age:1}) //greater than equal & less than equal
+
+db.test.find({ gender: "Female", age: { $nin: [18, 20, 22,24] } }, { age: 1,gender:1 }).sort({ age: 1 })
+//not in returns age without 18,20,22,24 
+
+
+db.test.find(
+    {
+        gender: "Female",
+        age: { $nin: [18, 20, 22, 24] },
+        interests: { $in: ["Cooking", "Gaming"] }
+
+    }, { age: 1, gender: 1,interests:1 }).sort({ age: 1 })
+
+db.test.find({
+    $and: [
+        { gender: "Female" },
+        { age: { $ne: 15 } },
+        { age: { $lte: 30 } }]
+}).project({ age: 1,gender:1 }).sort({
+    age: 1
+}) 
+
+//explicit $or
+db.test.find({
+    $or: [
+        {"skills.name":"JAVASCRIPT"}]
+}).project({ skills:1 }).sort({
+    age: 1
+}) 
+db.test.find({
+    "skills.name":{$in:['JAVASCRIPT','PYTHON']}
+}).project({ skills:1 }).sort({
+    age: 1
+})
+
+// BOTH ARE SAME 
+
+
+
+db.test.find({ interests: { $all:["Cooking","Travelling","Gaming"]} }).project({ interests: 1 }) // search will result in any sequence 
+
+
+
+UPDATE ###############################################
+db.test.updateOne(
+    { _id: ObjectId("6406ad65fc13ae5a400000c7") },
+    {
+        $set: {
+            interests:["Gaming"]
+        }
+    }
+)
+
+db.test.updateOne(
+    { _id: ObjectId("6406ad65fc13ae5a400000c7") },
+    {
+        $addToSet: {
+            interests:"Writing"
+        }
+    }
+)
+//addTOSet array r moddhe add korbe but $set array direact modify kore felbe 
+
+db.test.updateOne(
+    { _id: ObjectId("6406ad65fc13ae5a400000c7") },
+    {
+        $addToSet: {
+            interests: { $each: ["Writing", "Cooking"] }
+        }
+    }
+)
+//update array with multiple elements ;
+
+
+db.test.updateOne(
+    { _id: ObjectId("6406ad65fc13ae5a400000c7") },
+    {
+        $push: {
+            interests: { $each: ["Writing", "Cooking"] }
+        }
+    }
+)
+//to push duplicate entry in array;
