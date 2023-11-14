@@ -186,3 +186,25 @@ db.test.aggregate([
 
 ])
 
+
+######## $lookup
+db.orders.aggregate([
+    {
+    $lookup:
+        {
+        from: "test",
+        localField: "userId",  // primary field (orders collection)
+        foreignField: "_id", // foreigh field (test collection)
+        as: "user"
+        }
+    }
+
+])
+
+###### Indexing (single index , compoung index)
+
+db.getCollection("massiveData").createIndex({email:1}) //creating indexing assendingly by email
+db.getCollection("massiveData").dropIndex({email:1}) //droping index
+
+db.getCollection("massiveData").createIndex({about:"text}) //text indexing
+db.getCollection("massiveData").find({$text:{$search:"dolor"}}).project({about:1})
